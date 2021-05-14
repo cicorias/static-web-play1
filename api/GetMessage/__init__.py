@@ -18,7 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     if name:
         # return func.HttpResponse(json.dumps({"message": f"Hello, {name}. This HTTP triggered function executed successfully."}))
-        return return_response(to_dict("message", f"Hello, {name}. "))
+        return return_response(to_dict("message", f"Hello, {name}."))
     else:
         return return_response(to_dict("message", "no name passed but hello anyway"))
 
