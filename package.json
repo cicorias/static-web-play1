@@ -3,18 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.4.0"
   },
+  "devDependencies": {
+    "@azure/static-web-apps-cli": "^0.4.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "concurrently": "^6.1.0",
+    "node": "^12.13.1",
+    "npm": "^6.14.8",
+    "npm-run-all": "^4.1.5"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "FORCE_COLOR=true react-scripts start | cat",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "swa:static": "swa start ./build --api ./api",
+    "swa:start": "swa start http://localhost:3000 --api ./api",
+    "swa:x": "concurrently \"npm start\" \"swa start http://localhost:3000 --api ./api\"",
+    "swa:all": "run-p \"start\" \"swa:foo\""
   },
   "eslintConfig": {
     "extends": "react-app"
